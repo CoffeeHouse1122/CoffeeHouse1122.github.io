@@ -189,7 +189,7 @@ body {
   font-size: 14px;
   line-height: 2;
   color: #555;
-  background: #f5f7f9;
+  background: #0a09091a;
 }
 @media (max-width: 767px) {
   body {
@@ -1112,12 +1112,12 @@ pre .javascript .function {
   position: relative;
   display: inline-block;
   padding: 0 40px;
-  color: #fff;
+  color: #b5e61d;
   background: #222;
   border-bottom: none;
 }
 .brand:hover {
-  color: #fff;
+  color: #b5e61d;
 }
 .logo {
   display: inline-block;
@@ -1129,9 +1129,9 @@ pre .javascript .function {
   display: inline-block;
   vertical-align: top;
   line-height: 36px;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: normal;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "华文新魏";
 }
 .site-subtitle {
   margin-top: 10px;
@@ -2753,8 +2753,8 @@ pre .javascript .function {
 }
 .site-meta {
   padding: 20px 0;
-  color: #fff;
-  background: #222;
+  color: #ccc;
+  background:#fff;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .site-meta {
