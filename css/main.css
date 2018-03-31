@@ -2676,7 +2676,7 @@ pre .javascript .function {
   box-sizing: border-box;
   padding: 40px;
   width: 700px;
-  background: transparent;
+  background: rgba(158, 158, 158, 0.18);
   min-height: 700px;
   box-shadow: initial;
   border-radius: initial;
