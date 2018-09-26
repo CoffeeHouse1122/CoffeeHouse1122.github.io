@@ -248,6 +248,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/26/git多账号配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qiuzhaopeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/autor.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CoffeeHouse">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/26/git多账号配置/" itemprop="url">git多账号配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-26T11:02:11+08:00">
+                2018-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>ssh 方式链接到 Github／Gerrit，需要唯一的公钥，如果想同一台电脑绑定两个Github/Gerrit<br>帐号，需要两个条件:<br>  1.能够生成两对 私钥/公钥<br>  2.push 时，可以区分两个账户，推送到相应的仓库</li>
+</ul>
+<h3 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h3><ol>
+<li><p>Mac 下输入命令 ls ~/.ssh/，看到 id_rsa 与 id_rsa_pub 则说明已经有一对密钥<br><img src="/2018/09/26/git多账号配置/1.jpg" alt=""></p>
+</li>
+<li><p>生成新的公钥，并命名为 id_rsa_2 (保证与之前密钥文件名称不同即可,文件名最好有意义，否则写后面的配置的时候写错文件名，我的文件名是id_rsa_coffeehouse）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -f ~/.ssh/id_rsa_2 -C "yourmail@xxx.com"</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="/2018/09/26/git多账号配置/2.png" alt=""></p>
+<ol start="3">
+<li>在 .ssh 文件夹下新建 config 文件并编辑，令不同 Host 实际映射到同一HostName，但密钥文件不同。Host 前缀可自定义。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#osOne</span><br><span class="line">Host feiliu  <span class="comment">// 别名</span></span><br><span class="line">HostName <span class="number">172.16</span>.***.*** <span class="comment">// 主机名可用ip也可以是域名</span></span><br><span class="line">Port <span class="number">29418</span> <span class="comment">// 服务器open-ssh端口</span></span><br><span class="line">User qiuzhaopeng <span class="comment">// 登录用户名</span></span><br><span class="line">IdentityFile ~<span class="regexp">/.ssh/i</span>d_rsa <span class="comment">// 证书文件路径</span></span><br><span class="line"></span><br><span class="line">#osTwo</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">User CoffeeHouse1122</span><br><span class="line">IdentityFile ~<span class="regexp">/.ssh/i</span>d_rsa_coffeehouse</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><p>将id_rsa_coffeehouse.pub的密钥copy到github账号配置SSH keys中<br><img src="/2018/09/26/git多账号配置/3.png" alt=""></p>
+</li>
+<li><p>测试 (可跳过)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T feiliu</span><br><span class="line">ssh -T github.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将项目 clone 到本地, git push 测试一下</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/js高级/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1473,8 +1616,7 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="1-3-基本数据类型在内存中的存储方式-【重点】"><a href="#1-3-基本数据类型在内存中的存储方式-【重点】" class="headerlink" title="1.3 基本数据类型在内存中的存储方式 【重点】"></a>1.3 基本数据类型在内存中的存储方式 【重点】</h3><p>![</p>
-<p>](media/01.png)</p>
+<h3 id="1-3-基本数据类型在内存中的存储方式-【重点】"><a href="#1-3-基本数据类型在内存中的存储方式-【重点】" class="headerlink" title="1.3 基本数据类型在内存中的存储方式 【重点】"></a>1.3 基本数据类型在内存中的存储方式 【重点】</h3><p><img src="/2018/09/25/内置对象/media/01.png" alt=""></p>
 <h3 id="1-4-引用数据类型在内存中的存储方式-【重点】"><a href="#1-4-引用数据类型在内存中的存储方式-【重点】" class="headerlink" title="1.4 引用数据类型在内存中的存储方式 【重点】"></a>1.4 引用数据类型在内存中的存储方式 【重点】</h3><p><img src="/2018/09/25/内置对象/media/02.png" alt=""></p>
 <h2 id="二-内置对象"><a href="#二-内置对象" class="headerlink" title="二.内置对象"></a>二.内置对象</h2><h3 id="2-1-对象分类-了解"><a href="#2-1-对象分类-了解" class="headerlink" title="2.1 对象分类 [了解]"></a>2.1 对象分类 [了解]</h3><ul>
 <li><p>思考？</p>
@@ -2528,388 +2670,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/js基础语法02/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qiuzhaopeng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/autor.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CoffeeHouse">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/25/js基础语法02/" itemprop="url">js基础语法02</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-25T14:37:33+08:00">
-                2018-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="JavaScript语法基础02"><a href="#JavaScript语法基础02" class="headerlink" title="JavaScript语法基础02"></a>JavaScript语法基础02</h1><h2 id="一-表达式和语句"><a href="#一-表达式和语句" class="headerlink" title="一. 表达式和语句"></a>一. 表达式和语句</h2><h3 id="1-1-表达式-【了解】"><a href="#1-1-表达式-【了解】" class="headerlink" title="1.1 表达式 【了解】"></a>1.1 表达式 【了解】</h3><ul>
-<li><p>什么是表达式？</p>
-<blockquote>
-<p>​    一个表达式可以产生一个值，有可能是运算、函数调用、有可能是字面量。表达式可以放在任何需要值的地方。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="string">'张三'</span>==<span class="string">'李四'</span>;   <span class="comment">//true</span></span><br><span class="line">&gt; <span class="number">20</span>*<span class="number">2</span>+<span class="number">4</span>;  <span class="comment">//44</span></span><br><span class="line">&gt; <span class="string">'不要在年轻的时候选择安逸'</span>; <span class="comment">//字面量</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>常识</p>
-<blockquote>
-<ul>
-<li>只能操作一个值的操作符叫一元操作符,组成的表达式叫一元表达式.(一个值一个运算符)</li>
-<li>由两个值和一个运算符连接起来的表达式叫二元表达式。(两个值一个运算符)</li>
-<li>由三个值和两个运算符连接起来的表达式叫三元表达式.(三个值两个运算符)</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="number">-1</span>; <span class="comment">//一元表达式</span></span><br><span class="line">&gt; <span class="number">1</span> + <span class="number">1</span>; <span class="comment">//二元表达式</span></span><br><span class="line">&gt; <span class="keyword">var</span> age = <span class="number">18</span>;</span><br><span class="line">&gt; age&gt;=<span class="number">18</span>?<span class="string">'成年'</span>:<span class="string">'未成年'</span>; <span class="comment">//三元表达式</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<h3 id="1-2-语句-【了解】"><a href="#1-2-语句-【了解】" class="headerlink" title="1.2 语句 【了解】"></a>1.2 语句 【了解】</h3><ul>
-<li><p>什么是语句？</p>
-<blockquote>
-<p>​    语句可以理解为一个行为，循环语句和判断语句就是典型的语句。一个程序有很多个语句组成，一般情况下;分割一个一个的语句。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> age = <span class="number">18</span>;    <span class="comment">//这是一个赋值的行为，把18赋值给变量age</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<h2 id="二-流程控制"><a href="#二-流程控制" class="headerlink" title="二. 流程控制"></a>二. 流程控制</h2><h3 id="2-1-什么是流程控制？【重要】"><a href="#2-1-什么是流程控制？【重要】" class="headerlink" title="2.1 什么是流程控制？【重要】"></a>2.1 什么是流程控制？【重要】</h3><blockquote>
-<p>简单来说，就是控制程序的执行顺序。对于流程控制，可以分为三种结构。分别是：</p>
-<ul>
-<li>顺序结构</li>
-<li>分支结构</li>
-<li>循环结构</li>
-</ul>
-</blockquote>
-<h3 id="2-2-顺序结构-【了解】"><a href="#2-2-顺序结构-【了解】" class="headerlink" title="2.2 顺序结构 【了解】"></a>2.2 顺序结构 【了解】</h3><blockquote>
-<p>顺序结构，指的是js程序默认的执行顺序（自上而下）。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">document</span>.write(<span class="number">1</span>);</span><br><span class="line">&gt; <span class="built_in">document</span>.write(<span class="number">2</span>);</span><br><span class="line">&gt; <span class="built_in">document</span>.write(<span class="number">3</span>);</span><br><span class="line">&gt; <span class="built_in">document</span>.write(<span class="number">4</span>);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="2-3-分支结构-【重要】"><a href="#2-3-分支结构-【重要】" class="headerlink" title="2.3 分支结构 【重要】"></a>2.3 分支结构 【重要】</h3><blockquote>
-<p>分支结构，根据不同的情况，执行不同的代码。</p>
-<ul>
-<li><p>单分支结构</p>
-<ul>
-<li><p>语法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;     <span class="keyword">if</span>(条件表达式)&#123;</span><br><span class="line">&gt;     	<span class="comment">//执行语句</span></span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt;     <span class="comment">//当条件表达式成立时，也就是条件表达式的最终结果是true时，就进入大括号中执行代码。否则，当条件表达式不成立时，也就是条件表达式的最终结果是false时，就不会进入大括号中执行代码。</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;     <span class="comment">// 需求：接收用户所输入的年龄，若年龄大于等于18，就给用户显示一张图片。</span></span><br><span class="line">&gt;     <span class="keyword">var</span> age = prompt(<span class="string">'请输入你的年龄'</span>);</span><br><span class="line">&gt;     <span class="keyword">if</span>(age&gt;=<span class="number">18</span>)&#123;</span><br><span class="line">&gt;       <span class="built_in">document</span>.write(<span class="string">'&lt;img src="wc.jpg"&gt;'</span>)</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;     <span class="comment">//调试观察程序的执行流程</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>双分支结构</p>
-<ul>
-<li><p>语法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;     <span class="keyword">if</span>(条件表达式)&#123;</span><br><span class="line">&gt;       <span class="comment">//条件成立，要执行的代码</span></span><br><span class="line">&gt;     &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">&gt;       <span class="comment">//条件不成立，要执行的代码</span></span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt;     <span class="comment">//当条件表达式成立时，就执行if中的代码。否则，执行else中的代码。两者必定执行其中一个。</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;     <span class="comment">// 需求：接收用户所输入的年龄，若年龄大于等于18，就给用户显示一张图片。否则，告诉用户年龄太小，不宜观看。</span></span><br><span class="line">&gt;</span><br><span class="line">&gt;     <span class="keyword">var</span> age = prompt(<span class="string">'请输入你的年龄'</span>);</span><br><span class="line">&gt;     <span class="keyword">if</span>(age&gt;=<span class="number">18</span>) &#123;</span><br><span class="line">&gt;       docuemnt.write(<span class="string">'&lt;img src="wc.jpg"&gt;'</span>);</span><br><span class="line">&gt;     &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">&gt;       alert(<span class="string">'年龄太小，不宜观看'</span>);</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt;     <span class="comment">//调试观察程序的执行流程</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>多分支结构</p>
-<ul>
-<li><p>语法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;     <span class="keyword">if</span>(条件表达式)&#123;</span><br><span class="line">&gt;     	<span class="comment">// 执行语句</span></span><br><span class="line">&gt;     &#125;<span class="keyword">else</span> <span class="keyword">if</span>(条件表达式)&#123;</span><br><span class="line">&gt;     	<span class="comment">// 执行语句</span></span><br><span class="line">&gt;     &#125;<span class="keyword">else</span> <span class="keyword">if</span>(条件表达式)&#123;</span><br><span class="line">&gt;     	<span class="comment">// 执行语句</span></span><br><span class="line">&gt;     &#125;... else &#123;</span><br><span class="line">&gt;       <span class="comment">//执行语句</span></span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt;     <span class="comment">// 从第一个if开始条件表达式判断，若成立则跳过整个多分支语句。若不成立，则开始判断第二个条件表达式判断，依次类推。 若以上if判断都不成立，则最终执行最后一个else中的代码。对于最后的else可有可无（按需使用）</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;     <span class="comment">// 需求：接收班长口袋里的钱数？若大于等于2000，请大家吃西餐。若小于2000，大于等于1500，请大家吃快餐。若小于1500，大于等于1000，请大家喝饮料。若小于1000，大于等于500，请大家吃棒棒糖。否则提醒班长下次把钱带够</span></span><br><span class="line">&gt;     <span class="keyword">var</span> money = prompt(<span class="string">'班长口袋里的钱'</span>);</span><br><span class="line">&gt;     <span class="keyword">if</span>(money&gt;=<span class="number">2000</span>)&#123;</span><br><span class="line">&gt;       alert(<span class="string">'吃西餐'</span>);</span><br><span class="line">&gt;     &#125;<span class="keyword">else</span> <span class="keyword">if</span>(money&gt;=<span class="number">1500</span>)&#123;</span><br><span class="line">&gt;       alert(<span class="string">'吃快餐'</span>);</span><br><span class="line">&gt;     &#125;<span class="keyword">else</span> <span class="keyword">if</span>(money&gt;=<span class="number">1000</span>) &#123;</span><br><span class="line">&gt;       alert(<span class="string">'喝饮料'</span>);</span><br><span class="line">&gt;     &#125;<span class="keyword">else</span> <span class="keyword">if</span>(money&gt;=<span class="number">500</span>)&#123;</span><br><span class="line">&gt;       alert(<span class="string">'吃棒棒糖'</span>);</span><br><span class="line">&gt;     &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">&gt;       alert(<span class="string">'班长，下次带够钱'</span>);</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt;     <span class="comment">//调试观察程序的执行流程</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>switch结构</p>
-<ul>
-<li><p>语法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;     <span class="keyword">switch</span>(传入的值)&#123;</span><br><span class="line">&gt;       <span class="keyword">case</span> 值<span class="number">1</span>:</span><br><span class="line">&gt;         <span class="comment">//执行语句</span></span><br><span class="line">&gt;     	<span class="keyword">break</span>;</span><br><span class="line">&gt;       <span class="keyword">case</span> 值<span class="number">2</span>:</span><br><span class="line">&gt;         <span class="comment">//执行语句</span></span><br><span class="line">&gt;     	<span class="keyword">break</span>;</span><br><span class="line">&gt;       <span class="keyword">case</span> 值<span class="number">3</span>:</span><br><span class="line">&gt;         <span class="comment">//执行语句</span></span><br><span class="line">&gt;         <span class="keyword">break</span>;</span><br><span class="line">&gt;       <span class="comment">/*...*/</span></span><br><span class="line">&gt;       <span class="keyword">default</span>:</span><br><span class="line">&gt;         <span class="comment">//执行语句</span></span><br><span class="line">&gt;         <span class="keyword">break</span>;</span><br><span class="line">&gt;     	</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;     <span class="comment">//做等值（全等）判断，让传入的值和以下各种值的情况比较，符合执行应的代码。否则依次向下比较。若以上的值都不成立，则执行default(可有可无，按需使用)对应的代码。</span></span><br><span class="line">&gt;</span><br><span class="line">&gt;     <span class="comment">//break关键字，可有可无，按需使用。当执行了break关键字时，会结束switch结构</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&gt;     <span class="comment">//需求：接收用户输入的月份，根据月份告诉用户当前的季节3、4、5月为春季，6、7、8月为夏季，9、10、11月为秋季，12、1、2月为冬季。</span></span><br><span class="line">&gt;     <span class="keyword">var</span> month = prompt(<span class="string">'请输入月份'</span>);</span><br><span class="line">&gt;     <span class="keyword">switch</span>(month)&#123;</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"3"</span>:</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"4"</span>:</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"5"</span>:</span><br><span class="line">&gt;         alert(<span class="string">'春季'</span>);</span><br><span class="line">&gt;         <span class="keyword">break</span>;</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"6"</span>:</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"7"</span>:</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"8"</span>:</span><br><span class="line">&gt;         alert(<span class="string">'夏季'</span>);</span><br><span class="line">&gt;         <span class="keyword">break</span>;</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"9"</span>:</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"10"</span>:</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"11"</span>:</span><br><span class="line">&gt;         alert(<span class="string">'秋季'</span>);</span><br><span class="line">&gt;         <span class="keyword">break</span>;</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"12"</span>:</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"1"</span>:</span><br><span class="line">&gt;       <span class="keyword">case</span> <span class="string">"2"</span>:</span><br><span class="line">&gt;         alert(<span class="string">'冬季'</span>);</span><br><span class="line">&gt;         <span class="keyword">break</span>;</span><br><span class="line">&gt;       <span class="keyword">default</span>:</span><br><span class="line">&gt;         alert(<span class="string">'你输入的月份不合法'</span>);</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>switch结构 和 多分支结构的区别</p>
-<ul>
-<li>switch结构仅仅只能做等值判断。</li>
-<li>多分支结构，既可以做等值判断，也可以做其他判断。</li>
-<li>当对于多种情况，全都是等值判断时，可以选择使用switch，因为siwtch对于等值判断结构更加清晰，执行速度要比多分支结构要快一些。</li>
-</ul>
-</li>
-<li><p>三元表达式</p>
-<ul>
-<li><p>语法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;     条件表达式 ? 结果<span class="number">1</span>:结果<span class="number">2</span>;</span><br><span class="line">&gt;     <span class="comment">//当条件成立时，执行结果1，否则执行结果2。 是对if-else双分支语句的简写。 不过建议使用if-else,因为if-else结构更加清晰。</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;     <span class="comment">// 需求：接收用户所输入的年龄，若年龄大于等于18，就给用户显示一张图片。否则，告诉用户年龄太小，不宜观看。</span></span><br><span class="line">&gt;     <span class="keyword">var</span> age = prompt(<span class="string">'请输入你的年龄'</span>);</span><br><span class="line">&gt;     age&gt;=<span class="number">18</span>?<span class="built_in">document</span>.write(<span class="string">'&lt;img src="wc.jpg"&gt;'</span>):alert(<span class="string">'年龄太小，不宜观看'</span>);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<h3 id="2-4-循环结构-【重要】"><a href="#2-4-循环结构-【重要】" class="headerlink" title="2.4 循环结构 【重要】"></a>2.4 循环结构 【重要】</h3><ul>
-<li><p>什么是循环？</p>
-<blockquote>
-<p>循环，就是重复的意思。在程序中，通过循环可以重复的执行一段程序。<br>问题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 打印&quot;我爱你&quot;一万次到页面中 ？ 怎么做？</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>while 循环</p>
-<blockquote>
-<ul>
-<li><p>语法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;   <span class="keyword">while</span>(条件表达式)&#123;</span><br><span class="line">&gt;     <span class="comment">//循环体</span></span><br><span class="line">&gt;   &#125;</span><br><span class="line">&gt;   <span class="comment">//当条件成立时，会执行循环体中的代码。然后再返回判断条件是否成立，周而复始。直到条件不成立时，结束当前循环</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;   <span class="keyword">var</span> count = <span class="number">1</span>; <span class="comment">//初始化变量count为1；</span></span><br><span class="line">&gt;   <span class="keyword">while</span>(count&lt;=<span class="number">10000</span>)&#123;</span><br><span class="line">&gt;     <span class="built_in">document</span>.write(<span class="string">'&lt;h2&gt;我爱你&lt;/h2&gt;'</span>);</span><br><span class="line">&gt;     count++;</span><br><span class="line">&gt;   &#125;</span><br><span class="line">&gt;   <span class="comment">//调试观察代码的执行流程</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>图解while循环执行流程<br><img src="/2018/09/25/js基础语法02/media/01.png" alt="循环"></li>
-</ul>
-</blockquote>
-</li>
-<li><p>do-while 循环</p>
-<blockquote>
-<ul>
-<li><p>语法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;   <span class="keyword">do</span> &#123;</span><br><span class="line">&gt;     <span class="comment">//循环体</span></span><br><span class="line">&gt;   &#125;<span class="keyword">while</span>(条件表达式);</span><br><span class="line">&gt;</span><br><span class="line">&gt;   <span class="comment">//先执行一次循环体，然后是否周而复始的执行循环体，根据条件表达式是否成立决定。</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;   <span class="keyword">var</span> count = <span class="number">1</span>;</span><br><span class="line">&gt;   <span class="keyword">do</span> &#123;</span><br><span class="line">&gt;     <span class="built_in">document</span>.write(<span class="string">'&lt;h2&gt;我爱你&lt;/h2&gt;'</span>);</span><br><span class="line">&gt;     count++;</span><br><span class="line">&gt;   &#125;<span class="keyword">while</span>(count&lt;=<span class="number">10000</span>)</span><br><span class="line">&gt;   <span class="comment">//调试观察代码的执行流程</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>图解do-while循环执行流程<br><img src="/2018/09/25/js基础语法02/media/02.png" alt=""></li>
-</ul>
-</blockquote>
-</li>
-<li><p>for 循环 【一般for循环用的比较多】</p>
-<blockquote>
-<ul>
-<li><p>语法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;   <span class="comment">//每个表达式用分号;分割，千万不要写成逗号,</span></span><br><span class="line">&gt;   <span class="keyword">for</span>(初始化表达式<span class="number">1</span>;条件表达式<span class="number">2</span>;自增表达式<span class="number">3</span>)&#123;</span><br><span class="line">&gt;     <span class="comment">//循环体4</span></span><br><span class="line">&gt;   &#125;</span><br><span class="line">&gt;   <span class="comment">//执行顺序： 1 2 4 3 → 2 4 3 → 2 4 3 ...</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;   <span class="keyword">for</span>(<span class="keyword">var</span> count = <span class="number">1</span>;count&lt;=<span class="number">10000</span>;count++) &#123;</span><br><span class="line">&gt;     <span class="built_in">document</span>.write(<span class="string">'&lt;h2&gt;我爱你&lt;/h2&gt;'</span>);</span><br><span class="line">&gt;   &#125;</span><br><span class="line">&gt;   <span class="comment">////调试观察代码的执行流程</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>图解for循环执行流程<br><img src="/2018/09/25/js基础语法02/media/01.png" alt=""></p>
-<p><img src="/2018/09/25/js基础语法02/media/03.png" alt=""></p>
-</li>
-</ul>
-</blockquote>
-</li>
-<li><p>break 和 continue</p>
-<blockquote>
-<ul>
-<li><p>break 关键字</p>
-<ul>
-<li><p>作用：可以结束当前整个循环</p>
-</li>
-<li><p>代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;    <span class="comment">//需求：接收用户输入的用户名和密码，若用户名为 “admin” ,密码为 “123456” ,提示用户登录成功!  否则，让用户是指输入正确为止！</span></span><br><span class="line">&gt;    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">&gt;      <span class="keyword">var</span> userName = prompt(<span class="string">'请输入用户名'</span>);</span><br><span class="line">&gt;      <span class="keyword">var</span> pwd = prompt(<span class="string">'请输入密码'</span>);</span><br><span class="line">&gt;      <span class="keyword">if</span>(userName==<span class="string">'admin'</span>&amp;&amp;pwd==<span class="string">'123456'</span>)&#123;</span><br><span class="line">&gt;        alert(<span class="string">'登录成功'</span>);</span><br><span class="line">&gt;        <span class="keyword">break</span>;</span><br><span class="line">&gt;      &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">&gt;        alert(<span class="string">'用户名或密码错误，请重新输入'</span>);</span><br><span class="line">&gt;      &#125;</span><br><span class="line">&gt;    &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><p>continue关键字</p>
-<ul>
-<li><p>作用：结束当前这一次的循环，并开始下一次循环</p>
-</li>
-<li><p>代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;    <span class="comment">//打印 100以内所有的偶数</span></span><br><span class="line">&gt;    <span class="keyword">for</span>(<span class="keyword">var</span> num = <span class="number">1</span>;num&lt;=<span class="number">100</span>;num++)&#123;</span><br><span class="line">&gt;      <span class="keyword">if</span>(num%<span class="number">2</span>!=<span class="number">0</span>)&#123;</span><br><span class="line">&gt;        <span class="keyword">continue</span>;</span><br><span class="line">&gt;      &#125;</span><br><span class="line">&gt;      <span class="built_in">console</span>.log(num);</span><br><span class="line">&gt;    &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</li>
-<li><p>三种循环的相同点和不同点</p>
-<blockquote>
-<ul>
-<li>相同点：<ul>
-<li>都是循环</li>
-</ul>
-</li>
-<li>不同点<ul>
-<li>不论条件是否成立，循环体必须执行一次，用do-while循环</li>
-<li>当循环次数不确定时，选用while循环更加简单些</li>
-<li>当循环次数确定时，一般选择使用for循环</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</li>
-<li><p>死循环</p>
-<blockquote>
-<p>永无休止的循环就是“死循环”，在程序中要避免“死循环”</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">while</span>(<span class="number">1</span>==<span class="number">1</span>) &#123;</span><br><span class="line">&gt;   <span class="built_in">console</span>.log(<span class="string">'我爱你'</span>);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2959,7 +2724,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -3069,7 +2834,7 @@
 
  <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.8k字 </span>
+  <span class="post-count">博客全站共28.2k字 </span>
 </div>
 
 
