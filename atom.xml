@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-08T07:10:05.817Z</updated>
+  <updated>2018-10-08T07:41:34.322Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac os 结束占用端口</title>
+    <link href="http://yoursite.com/2018/10/08/mac-os-%E7%BB%93%E6%9D%9F%E5%8D%A0%E7%94%A8%E7%AB%AF%E5%8F%A3/"/>
+    <id>http://yoursite.com/2018/10/08/mac-os-结束占用端口/</id>
+    <published>2018-10-08T07:39:07.000Z</published>
+    <updated>2018-10-08T07:41:34.322Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-打开终端，输入命令"><a href="#1-打开终端，输入命令" class="headerlink" title="1.打开终端，输入命令"></a>1.打开终端，输入命令</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:**** <span class="comment">// 端口号</span></span><br></pre></td></tr></table></figure><h3 id="2-结束端口进程"><a href="#2-结束端口进程" class="headerlink" title="2.结束端口进程"></a>2.结束端口进程</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill ****</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-打开终端，输入命令&quot;&gt;&lt;a href=&quot;#1-打开终端，输入命令&quot; class=&quot;headerlink&quot; title=&quot;1.打开终端，输入命令&quot;&gt;&lt;/a&gt;1.打开终端，输入命令&lt;/h3&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>飞流工作总结</title>
