@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vue生命周期]]></title>
+    <url>%2F2018%2F10%2F10%2Fvue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%2F</url>
+    <content type="text"><![CDATA[参考思否的一篇文章理解https://segmentfault.com/a/1190000008010666]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[mac os 结束占用端口]]></title>
     <url>%2F2018%2F10%2F08%2Fmac-os-%E7%BB%93%E6%9D%9F%E5%8D%A0%E7%94%A8%E7%AB%AF%E5%8F%A3%2F</url>
     <content type="text"><![CDATA[1.打开终端，输入命令1lsof -i:**** // 端口号 2.结束端口进程1kill ****]]></content>

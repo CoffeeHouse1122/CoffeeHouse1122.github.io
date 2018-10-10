@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-08T07:41:34.322Z</updated>
+  <updated>2018-10-10T08:03:49.911Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue生命周期</title>
+    <link href="http://yoursite.com/2018/10/10/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    <id>http://yoursite.com/2018/10/10/vue生命周期/</id>
+    <published>2018-10-10T07:59:15.000Z</published>
+    <updated>2018-10-10T08:03:49.911Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="参考思否的一篇文章理解"><a href="#参考思否的一篇文章理解" class="headerlink" title="参考思否的一篇文章理解"></a>参考思否的一篇文章理解</h3><p><a href="Vue2.0 探索之路——生命周期和钩子函数的一些理解（作者：城南）">https://segmentfault.com/a/1190000008010666</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;参考思否的一篇文章理解&quot;&gt;&lt;a href=&quot;#参考思否的一篇文章理解&quot; class=&quot;headerlink&quot; title=&quot;参考思否的一篇文章理解&quot;&gt;&lt;/a&gt;参考思否的一篇文章理解&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;Vue2.0 探索之路——生命周期和钩子函数的一些
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>mac os 结束占用端口</title>
