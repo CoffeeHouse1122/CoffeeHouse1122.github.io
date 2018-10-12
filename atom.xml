@@ -124,6 +124,28 @@
   </entry>
   
   <entry>
+    <title>免密登录服务器</title>
+    <link href="http://yoursite.com/2018/08/03/%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>http://yoursite.com/2018/08/03/免密登录服务器/</id>
+    <published>2018-08-03T06:56:49.000Z</published>
+    <updated>2018-10-12T07:41:32.405Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="利用公钥，免密码登录服务器"><a href="#利用公钥，免密码登录服务器" class="headerlink" title="利用公钥，免密码登录服务器"></a>利用公钥，免密码登录服务器</h3><ul><li>1.生成公钥<br>ssh-keygen -q -t rsa -C “<a href="mailto:testtest@feiliu.com" target="_blank" rel="noopener">testtest@feiliu.com</a>”</li><li>2.找到本机公钥，复制公钥<br>cat ~/.ssh/id_rsa.pub</li><li>3.登录服务器<br>ssh -p 22 <a href="mailto:root@106.75.19.156" target="_blank" rel="noopener">root@106.75.19.156</a></li><li>4.切换node账号<br>su - node</li><li>5.把公钥粘贴到该文件中<br>vi ~/.ssh/authorized_keys</li><li>6.保存退出即可免密码登录<br><img src="/2018/08/03/免密登录服务器/1.jpg" alt=""></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;利用公钥，免密码登录服务器&quot;&gt;&lt;a href=&quot;#利用公钥，免密码登录服务器&quot; class=&quot;headerlink&quot; title=&quot;利用公钥，免密码登录服务器&quot;&gt;&lt;/a&gt;利用公钥，免密码登录服务器&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;1.生成公钥&lt;br&gt;ssh-keygen
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>内置对象</title>
     <link href="http://yoursite.com/2018/07/22/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/"/>
     <id>http://yoursite.com/2018/07/22/内置对象/</id>
