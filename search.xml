@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[面试题总结]]></title>
+    <url>%2F2018%2F10%2F18%2F%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[http状态码 100-199 用于指定客户端应相应的某些动作 200-299 用于表示请求成功 300-399 用于已经移动的文件并且常被包含在定位头信息中指定新的地址信息 400 语义有误，当前请求无法被服务器理解 401 当前请求需要用户验证 403 服务器已经理解请求，但是拒绝执行它 500-599 用于支持服务器错误 503 服务不可用 sessionStorage、localStorage、cookie的区别 共同点：都是保存在浏览器端，并且是同源的（URL的协议、端口、主机名是相同的，只要有一个不同就属于不同源） 不同点： cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，而session Storage和localStorage不会自动把数据发送给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以 限制cookie只属于某个路径下。 存储大小限制也不同，cookie数据不能超过4K，同时因为每次http请求都会携带cookie、所以cookie只适合 保存很小的数据，如会话标识。sessionStorage和localStorage虽然也有存储大小的限制，但比cookie大得多，可以 达到5M或更大 数据有效期不同，sessionStorage仅仅在当前浏览器窗口关闭之前有效；localStorage始终有效，窗口或者 浏览器关闭之后也一直保存，因此作用持久数据；cookie，只在设置cookie过期时间之前有效，即使窗口关闭或者浏 览器关闭。 作用域不同：sessionStorage在不同的浏览器窗口中不共享，即使是同一个页面，localStorage在所有的同源窗 口中是共享的，cookie也是在所有同源的窗口中共享的。 web Storage支持事件通知机制，可以将数据更新的通知发送给监听者。 web Storage的api接口使用更方便。 call apply bind 区别 call：this指向第一个参数 apply：this指向第一个参数第二个参数必须是一个数组 注意如果call和apply的第一个参数写的是null，那么this指向的是window对象 bind：this指向第一个参数不是立即执行，并且可以将参数在执行的时候添加]]></content>
+      <categories>
+        <category>一些前端知识</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[前端性能优化总结]]></title>
     <url>%2F2018%2F10%2F18%2F%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[参考雅虎14条性能优化原则 尽可能减少http的请求数 使用CDN （Content Delivery Network）（内容分发网络） 添加 Expires 头（或者 Cache-control） Gzip组件 将css样式放在页面的上方 将脚本移动到底部（包括内联的） 避免使用css中的 Expressions 将javascript 和 css 独立成外部文件 减少DNS查询 压缩Javascript 和 css 避免重定向 移除重复的脚本 配置实体标签 （ETags） 使用ajax缓存]]></content>
