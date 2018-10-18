@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+
+<script type="text/javascript" color="233,30,99" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CoffeeHouse" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="HTML样式兼容性问题1234&amp;lt;!-- IE 按 Edge 模式渲染 --&amp;gt;&amp;lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge&quot; /&amp;gt;&amp;lt;!-- IE 8 9 10 按 IE7 模式渲染 --&amp;gt;&amp;lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Emulate7&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端兼容性问题总结">
+<meta property="og:url" content="http://yoursite.com/2018/10/18/前端兼容性问题总结/index.html">
+<meta property="og:site_name" content="CoffeeHouse">
+<meta property="og:description" content="HTML样式兼容性问题1234&amp;lt;!-- IE 按 Edge 模式渲染 --&amp;gt;&amp;lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge&quot; /&amp;gt;&amp;lt;!-- IE 8 9 10 按 IE7 模式渲染 --&amp;gt;&amp;lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Emulate7&quot;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-18T11:24:01.265Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端兼容性问题总结">
+<meta name="twitter:description" content="HTML样式兼容性问题1234&amp;lt;!-- IE 按 Edge 模式渲染 --&amp;gt;&amp;lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge&quot; /&amp;gt;&amp;lt;!-- IE 8 9 10 按 IE7 模式渲染 --&amp;gt;&amp;lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Emulate7&quot;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/18/前端兼容性问题总结/"/>
+
+
+
+
+
+  <title>前端兼容性问题总结 | CoffeeHouse</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CoffeeHouse</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-目录">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/前端兼容性问题总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="仇兆鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/autor.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CoffeeHouse">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端兼容性问题总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T14:36:05+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/一些前端知识/" itemprop="url" rel="index">
+                    <span itemprop="name">一些前端知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><h5 id="样式兼容性问题"><a href="#样式兼容性问题" class="headerlink" title="样式兼容性问题"></a>样式兼容性问题</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- IE 按 Edge 模式渲染 --&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=Edge"</span> /&gt;</span><br><span class="line">&lt;!-- IE <span class="number">8</span> <span class="number">9</span> <span class="number">10</span> 按 IE7 模式渲染 --&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=Emulate7"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="怪异模式"><a href="#怪异模式" class="headerlink" title="怪异模式"></a>怪异模式</h5><p>标准模式：浏览器按W3C标准解析执行代码；<br>怪异模式：使用浏览器自己的方式解析执行代码，因为不同浏览器解析执行的方式不一样，所以称之为怪异模式；</p>
+<ol>
+<li>width = contentWidth + 左右padding + 左右border （height亦是如此）</li>
+<li>table的font-size不能从父元素继承</li>
+<li>图片元素的垂直对齐方式：table单元格中的图片的vertical-align属性默认取值是bottom</li>
+<li>标准模式下，overflow取值默认为visible；在怪异模式在，该溢出会被当做扩展box来对待，即元素的大小由内容决定，溢出不会裁剪，元素框自动调整，包含溢出内容。<br>以下情况会触发浏览器的怪异模式（Quirks Mode）:</li>
+</ol>
+<ul>
+<li>没写 DOCTYPE 触发怪异模式</li>
+<li>在&lt;!DOCTYPE …&gt; 前加 &lt;?xml version=”1.0” encoding=”utf-8” ?&gt;,IE6下也会出发怪异模式</li>
+<li>&lt;!DOCTYPE …&gt; 前加入<!--- keep IE7 in Quirks Mode-->,IE7进入怪异模式</li>
+<li>&lt;!DOCTYPE …&gt;前有任何非空字符，会在IE6 下会触发怪异模式</li>
+<li>&lt;!DOCTYPE …&gt;前有 XML ，在IE7 下不会触发怪异模式，但不能有其他非空字符<br>检查document.compatMode,可以查看浏览器工作在哪个模式：值BackCompat为怪异模式，值CSS1Compat为标准模式</li>
+</ul>
+<h5 id="display-inline-block元素间有间隙"><a href="#display-inline-block元素间有间隙" class="headerlink" title="display:inline-block元素间有间隙"></a>display:inline-block元素间有间隙</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- li &#123;display: inline;&#125; --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 有间隙 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>111<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>222<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>333<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 无间隙 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>444<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>555<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>666<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="IE可能出现的文档样式短暂失效的问题"><a href="#IE可能出现的文档样式短暂失效的问题" class="headerlink" title="IE可能出现的文档样式短暂失效的问题"></a>IE可能出现的文档样式短暂失效的问题</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- meta部分 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 可能的script部分 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>   <span class="comment">&lt;!-- 关键：添加一个空标签 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- link部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="css"><a href="#css" class="headerlink" title="css"></a>css</h4><h5 id="在IE6中设置了float-同时又设置margin-就会出现双倍margin间距"><a href="#在IE6中设置了float-同时又设置margin-就会出现双倍margin间距" class="headerlink" title="在IE6中设置了float,同时又设置margin,就会出现双倍margin间距"></a>在IE6中设置了float,同时又设置margin,就会出现双倍margin间距</h5><ul>
+<li>解决此办法的最简单的方法是，在style中添加：display:inline;</li>
+</ul>
+<h5 id="DIV浮动IE文本产生3象素的bug"><a href="#DIV浮动IE文本产生3象素的bug" class="headerlink" title="DIV浮动IE文本产生3象素的bug"></a>DIV浮动IE文本产生3象素的bug</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">#box&#123; float:left; width:800px;&#125;</span></span><br><span class="line"><span class="undefined">#left&#123; float:left; width:50%;&#125;</span></span><br><span class="line"><span class="undefined">#right&#123; width:50%;&#125;</span></span><br><span class="line"><span class="undefined">#left&#123; margin-right:-3px; //这句是关键&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">”box”</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">”left”</span>&gt;</span>＜/div&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">”right”</span>&gt;</span>＜/div&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="IE6-奇数宽高问题"><a href="#IE6-奇数宽高问题" class="headerlink" title="IE6 奇数宽高问题"></a>IE6 奇数宽高问题</h5><ul>
+<li>IE6中盒子的宽和高设置为奇数会有bug，尽量设置为偶数即可</li>
+</ul>
+<h5 id="文字大小"><a href="#文字大小" class="headerlink" title="文字大小"></a>文字大小</h5><ul>
+<li>字体大小在不同浏览上不一致。例如font-size:14px，在IE中的实际行高是16px，下面有3px留白；在 Firefox 中的实际行高是17px，下面有3px留白，上边1px留白；在opera中就更不一样了。</li>
+<li>解决方式：<br>统一指定行高line-height；<br>将浏览器的基准字号设置为 62.5%，也就是 10px，现在 1rem = 10px —— 为了计算方便。</li>
+</ul>
+<h5 id="去除元素默认边距"><a href="#去除元素默认边距" class="headerlink" title="去除元素默认边距"></a>去除元素默认边距</h5><ul>
+<li>不同浏览器默认样式不同，许多元素也有默认样式，对排版不利。利用<br>通配符*去除边距存在性能问题，所以用下面语句清楚默认边距<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>,<span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>,<span class="selector-tag">hr</span>,<span class="selector-tag">p</span>,<span class="selector-tag">blockquote</span>,<span class="selector-tag">dl</span>,<span class="selector-tag">dt</span>,<span class="selector-tag">dd</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">ol</span>,<span class="selector-tag">li</span>,<span class="selector-tag">pre</span>,<span class="selector-tag">form</span>,<span class="selector-tag">fieldset</span>,<span class="selector-tag">legend</span>,<span class="selector-tag">button</span>,<span class="selector-tag">input</span>,<span class="selector-tag">textarea</span>,<span class="selector-tag">th</span>,<span class="selector-tag">td</span>&#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="低版本IE高度宽度限定失效"><a href="#低版本IE高度宽度限定失效" class="headerlink" title="低版本IE高度宽度限定失效"></a>低版本IE高度宽度限定失效</h5><ul>
+<li>一般的元素指定高度属性 height 可以固定该元素高度，但在低版本 IE 中无法固定元素高度，该元素高度依然会被内容撑开，需要注意。(宽度也一样)</li>
+</ul>
+<h5 id="Firefox-的宽度问题"><a href="#Firefox-的宽度问题" class="headerlink" title="Firefox 的宽度问题"></a>Firefox 的宽度问题</h5><ul>
+<li>Firefox浏览器会的 body 比其他浏览器的 body 宽度小1个像素，注意设置其子元素（尤其 float 元素大小，防止排版混乱</li>
+</ul>
+<h5 id="IE6中的吞吃问题"><a href="#IE6中的吞吃问题" class="headerlink" title="IE6中的吞吃问题"></a>IE6中的吞吃问题</h5><ul>
+<li>IE6中两个div,上一个div设置背景，下一个div也会带有背景，类似还有 overflow：scroll，出现的滚动条不完整。应该分别在两个div样式中加 zoom：1样式</li>
+</ul>
+<h5 id="IE6图片格式问题"><a href="#IE6图片格式问题" class="headerlink" title="IE6图片格式问题"></a>IE6图片格式问题</h5><ul>
+<li>IE6中的图片默认存在边框，应统一去除。同时图片下方会有空隙，用font-size解决<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: none;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="IE6下不能定义1px高度的容器"><a href="#IE6下不能定义1px高度的容器" class="headerlink" title="IE6下不能定义1px高度的容器"></a>IE6下不能定义1px高度的容器</h5><ul>
+<li>在IE6浏览器下，定义一个div，高度设为1px，显示高度为18px；</li>
+<li>原因：IE6浏览器下的默认行高</li>
+<li>解决：添加属性 line-height:1px; overflow:hidden; zoom:1;</li>
+</ul>
+<h5 id="IE6-z-index失效"><a href="#IE6-z-index失效" class="headerlink" title="IE6 z-index失效"></a>IE6 z-index失效</h5><ul>
+<li>当父元素已设置z-index属性，子元素的z-index会失效</li>
+</ul>
+<h5 id="让Chrome支持小于12px的字体"><a href="#让Chrome支持小于12px的字体" class="headerlink" title="让Chrome支持小于12px的字体"></a>让Chrome支持小于12px的字体</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123;</span><br><span class="line">   <span class="attribute">font-size</span>:<span class="number">10px</span>;</span><br><span class="line">   <span class="attribute">-webkit-transform</span>:<span class="built_in">scale</span>(0.8);</span><br><span class="line">   <span class="attribute">display</span>:block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="IE9一下浏览器不能使用opacity"><a href="#IE9一下浏览器不能使用opacity" class="headerlink" title="IE9一下浏览器不能使用opacity"></a>IE9一下浏览器不能使用opacity</h5><h5 id="cursor-hand-显示手型在safari-上不支持"><a href="#cursor-hand-显示手型在safari-上不支持" class="headerlink" title="cursor:hand 显示手型在safari 上不支持"></a>cursor:hand 显示手型在safari 上不支持</h5><ul>
+<li>解决方案：统一使用 cursor:pointer</li>
+</ul>
+<h5 id="css-hack"><a href="#css-hack" class="headerlink" title="css hack"></a>css hack</h5><ul>
+<li>浏览器兼容</li>
+<li>书写顺序：优先写高等级浏览器支持方式、优先写支持浏览器多的方式<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">  color: #f00;   //所有浏览器都支持</span><br><span class="line">  color: #0f0 !important;   //只有 IE6 无效</span><br><span class="line">  color: #00f\9;  //所有 IE 都有效</span><br><span class="line">  color: #ff0\0;  //IE8+ 有效</span><br><span class="line">  color: #f0f\9\0; //IE9+ 有效</span><br><span class="line">  *color: #fff;  //仅 IE6, IE7 有效</span><br><span class="line">  #color: #0ff;  //仅 IE6, IE7 有效</span><br><span class="line">  +color: #800;  //仅 IE6, IE7 有效</span><br><span class="line">  -color: #008;  //只有 IE6 有效</span><br><span class="line">  _color: #080;  //只有 IE6 有效</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h4><h5 id="innerText-和-innerContent"><a href="#innerText-和-innerContent" class="headerlink" title="innerText 和 innerContent"></a>innerText 和 innerContent</h5><ol>
+<li>innerText 和 innerContent 作用相同</li>
+<li>innerContent IE8之前的浏览器不支持</li>
+<li>innerText 老版本的Firefox支持</li>
+<li>新版本的浏览器两种方式都支持</li>
+</ol>
+<ul>
+<li>parentELement和 parentNode 也符合上面四种情况</li>
+</ul>
+<h5 id="获取兄弟节点-元素的兼容性问题"><a href="#获取兄弟节点-元素的兼容性问题" class="headerlink" title="获取兄弟节点/元素的兼容性问题"></a>获取兄弟节点/元素的兼容性问题</h5><ul>
+<li>ie8以前不支持previousElementSibling和nextElementSibling,以及诸如此类带有Element的元素属性。利用previousSibling和nextSibling等不带Element的属性实现。</li>
+</ul>
+<h5 id="js操作css兼容性"><a href="#js操作css兼容性" class="headerlink" title="js操作css兼容性"></a>js操作css兼容性</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//透明度</span></span><br><span class="line"><span class="comment">//非IE方法</span></span><br><span class="line">ele.style.opacity = <span class="number">0.2</span>;  <span class="comment">//0-1</span></span><br><span class="line"><span class="comment">//IE</span></span><br><span class="line">ele.style.filter = <span class="string">"alpha(opacity=100)"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//float属性</span></span><br><span class="line"><span class="comment">//非IE</span></span><br><span class="line">ele.style.float = <span class="string">"left"</span>;</span><br><span class="line"><span class="comment">//IE</span></span><br><span class="line">ele.style.cssFloat = <span class="string">"left"</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="注册事件"><a href="#注册事件" class="headerlink" title="注册事件"></a>注册事件</h5><ul>
+<li>标准的绑定方法有两种，addEventListener和attachEvent前者是标准浏览器支持的API，后者是IE8以下浏览器支持的API:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例如给一个button注册click事件</span></span><br><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>);  <span class="comment">//button是一个&lt;button&gt;元素</span></span><br><span class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;alert(<span class="string">"button clicked."</span>);&#125;;</span><br><span class="line"><span class="keyword">if</span>(el.addEventLister)&#123;</span><br><span class="line">    el.addEventListener(<span class="string">"click"</span>, handler,<span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(el.attachEvent)&#123;</span><br><span class="line">    el.attachEvent(<span class="string">"onclick"</span>, handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>需要注意的是： </p>
+<ul>
+<li>addEventLister的第一个参数事件类型是不加on前缀的，而attachEvent中需要加on前缀; </li>
+<li>addEventLister中的事件回调函数中的this指向事件元素target本身，而attachEvent中的事件回调函数的this指向的是window; </li>
+<li>addEventLister有第三个参数，true表示事件工作在捕获阶段，false为冒泡阶段(默认值:false)。而attachEvent只能工作在冒泡阶段; </li>
+<li>解除事件方法标准方法removeListen()，在IE8中，对应使用detachEvent()。注意，他们和上面的注册方法一一对应，不能混用; </li>
+<li>阻止默认事件标准方法 event.preventDefault(), 在IE8中，使用 event.returnValue = false; </li>
+<li>阻止冒泡的方法 event.stopPropagation(), 在IE8中，使用 event.cancelBubble = true; </li>
+<li>老版本 IE 中，事件函数内部的 this 不是被监听元素本身，而是 window 。故应该使用 call 改变 this 指向。</li>
+</ul>
+<h5 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h5><ul>
+<li>e.eventPhase 事件阶段，IE8及以前不支持，因为那时不支持捕获</li>
+<li>e.target 始终是触发事件的对象。IE8以前用srcElement</li>
+<li>ie8以前用window.event获得事件对象，而不是回调函数的参数e</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;&#125;</span><br><span class="line">  <span class="keyword">return</span> e || <span class="built_in">window</span>.event;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 兼容target</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  target = e.target || e.srcElement;</span><br><span class="line">  <span class="comment">//do something else</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="获取键盘事件的键值"><a href="#获取键盘事件的键值" class="headerlink" title="获取键盘事件的键值"></a>获取键盘事件的键值</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> keyCode = e.keyCode || e.which;</span><br></pre></td></tr></table></figure>
+<h5 id="使不支持h5的浏览器支持h5标签"><a href="#使不支持h5的浏览器支持h5标签" class="headerlink" title="使不支持h5的浏览器支持h5标签"></a>使不支持h5的浏览器支持h5标签</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if IE]&gt;</span></span><br><span class="line"><span class="comment">&lt;style&gt;</span></span><br><span class="line"><span class="comment">  article, aside, footer, header, nav, section, details, menu, figure &#123;</span></span><br><span class="line"><span class="comment">    display: block;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  canvas, progress, audio, video &#123;</span></span><br><span class="line"><span class="comment">    display: inline-block;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  progress &#123;</span></span><br><span class="line"><span class="comment">    vertical-align: baseline;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  audio:not([controls]) &#123;</span></span><br><span class="line"><span class="comment">    display: none;</span></span><br><span class="line"><span class="comment">    height: 0;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  mark &#123;</span></span><br><span class="line"><span class="comment">    background-color: #ff0;</span></span><br><span class="line"><span class="comment">    color: #000;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">&lt;/style&gt;</span></span><br><span class="line"><span class="comment">&lt;script&gt;</span></span><br><span class="line"><span class="comment">(function() &#123;</span></span><br><span class="line"><span class="comment">  if(!/*@cc_on!@*/0)</span></span><br><span class="line"><span class="comment">    return;</span></span><br><span class="line"><span class="comment">  var e = "abbr, article, aside, audio, bb, canvas, datagrid, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');</span></span><br><span class="line"><span class="comment">  var i = e.length;</span></span><br><span class="line"><span class="comment">  while(i--) &#123;</span></span><br><span class="line"><span class="comment">    document.createElement(e[i]);</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">&#125;)();</span></span><br><span class="line"><span class="comment">&lt;/script&gt;</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="Ajax-兼容问题"><a href="#Ajax-兼容问题" class="headerlink" title="Ajax 兼容问题"></a>Ajax 兼容问题</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个 XMLHttpRequest 对象</span></span><br><span class="line"><span class="keyword">var</span> xhr;</span><br><span class="line"><span class="keyword">if</span>(XMLHttpRequest)&#123;</span><br><span class="line">  xhr = <span class="keyword">new</span> XMLHttpRequest();    <span class="comment">//chrome, safari, opera, firefox</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(ActionXObject)&#123;</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> ActionXObject(<span class="string">"Msxml2.XMLHTTP"</span>);   <span class="comment">//IE 中 Msxml 插件</span></span><br><span class="line">  &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> ActionXObject(<span class="string">"Microsoft.XMLHTTP"</span>);   <span class="comment">//IE</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><h5 id="处理html和css编码不一致问题"><a href="#处理html和css编码不一致问题" class="headerlink" title="处理html和css编码不一致问题"></a>处理html和css编码不一致问题</h5><ul>
+<li>在web.config中写以下代码<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span><span class="tag">&lt;<span class="name">globalization</span> <span class="attr">fileEncoding</span>=<span class="string">"utf-8"</span> <span class="attr">resquestEncoding</span>=<span class="string">"utf-8"</span> <span class="attr">responseEncoding</span>=<span class="string">"utf-8"</span> <span class="attr">culture</span>=<span class="string">"zh-CN"</span> /&gt;</span><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读-------------
+        </div>
+    
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/16/web前端知识体系精简/" rel="next" title="web前端知识体系精简">
+                <i class="fa fa-chevron-left"></i> web前端知识体系精简
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/autor.jpg"
+                alt="仇兆鹏" />
+            
+              <p class="site-author-name" itemprop="name">仇兆鹏</p>
+              <p class="site-description motion-element" itemprop="description">山中一棵树 水里一条鱼</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">目录</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/CoffeeHouse1122" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5101317315" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML"><span class="nav-number">1.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#样式兼容性问题"><span class="nav-number">1.1.</span> <span class="nav-text">样式兼容性问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#怪异模式"><span class="nav-number">1.2.</span> <span class="nav-text">怪异模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#display-inline-block元素间有间隙"><span class="nav-number">1.3.</span> <span class="nav-text">display:inline-block元素间有间隙</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IE可能出现的文档样式短暂失效的问题"><span class="nav-number">1.4.</span> <span class="nav-text">IE可能出现的文档样式短暂失效的问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css"><span class="nav-number">2.</span> <span class="nav-text">css</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在IE6中设置了float-同时又设置margin-就会出现双倍margin间距"><span class="nav-number">2.1.</span> <span class="nav-text">在IE6中设置了float,同时又设置margin,就会出现双倍margin间距</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DIV浮动IE文本产生3象素的bug"><span class="nav-number">2.2.</span> <span class="nav-text">DIV浮动IE文本产生3象素的bug</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IE6-奇数宽高问题"><span class="nav-number">2.3.</span> <span class="nav-text">IE6 奇数宽高问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文字大小"><span class="nav-number">2.4.</span> <span class="nav-text">文字大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#去除元素默认边距"><span class="nav-number">2.5.</span> <span class="nav-text">去除元素默认边距</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#低版本IE高度宽度限定失效"><span class="nav-number">2.6.</span> <span class="nav-text">低版本IE高度宽度限定失效</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Firefox-的宽度问题"><span class="nav-number">2.7.</span> <span class="nav-text">Firefox 的宽度问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IE6中的吞吃问题"><span class="nav-number">2.8.</span> <span class="nav-text">IE6中的吞吃问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IE6图片格式问题"><span class="nav-number">2.9.</span> <span class="nav-text">IE6图片格式问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IE6下不能定义1px高度的容器"><span class="nav-number">2.10.</span> <span class="nav-text">IE6下不能定义1px高度的容器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IE6-z-index失效"><span class="nav-number">2.11.</span> <span class="nav-text">IE6 z-index失效</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#让Chrome支持小于12px的字体"><span class="nav-number">2.12.</span> <span class="nav-text">让Chrome支持小于12px的字体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IE9一下浏览器不能使用opacity"><span class="nav-number">2.13.</span> <span class="nav-text">IE9一下浏览器不能使用opacity</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cursor-hand-显示手型在safari-上不支持"><span class="nav-number">2.14.</span> <span class="nav-text">cursor:hand 显示手型在safari 上不支持</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#css-hack"><span class="nav-number">2.15.</span> <span class="nav-text">css hack</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Javascript"><span class="nav-number">3.</span> <span class="nav-text">Javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#innerText-和-innerContent"><span class="nav-number">3.1.</span> <span class="nav-text">innerText 和 innerContent</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#获取兄弟节点-元素的兼容性问题"><span class="nav-number">3.2.</span> <span class="nav-text">获取兄弟节点/元素的兼容性问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#js操作css兼容性"><span class="nav-number">3.3.</span> <span class="nav-text">js操作css兼容性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注册事件"><span class="nav-number">3.4.</span> <span class="nav-text">注册事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事件对象"><span class="nav-number">3.5.</span> <span class="nav-text">事件对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#获取键盘事件的键值"><span class="nav-number">3.6.</span> <span class="nav-text">获取键盘事件的键值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使不支持h5的浏览器支持h5标签"><span class="nav-number">3.7.</span> <span class="nav-text">使不支持h5的浏览器支持h5标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ajax-兼容问题"><span class="nav-number">3.8.</span> <span class="nav-text">Ajax 兼容问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#处理html和css编码不一致问题"><span class="nav-number">4.1.</span> <span class="nav-text">处理html和css编码不一致问题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">仇兆鹏</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访客数:<span id="busuanzi_value_site_uv"></span>次
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+<div class="powered-by">
+<i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+ <div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共32.4k字 </span>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
