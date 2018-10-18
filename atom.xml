@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-18T11:24:01.265Z</updated>
+  <updated>2018-10-18T11:46:31.323Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端性能优化总结</title>
+    <link href="http://yoursite.com/2018/10/18/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2018/10/18/前端性能优化总结/</id>
+    <published>2018-10-18T11:27:16.000Z</published>
+    <updated>2018-10-18T11:46:31.323Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="参考雅虎14条性能优化原则"><a href="#参考雅虎14条性能优化原则" class="headerlink" title="参考雅虎14条性能优化原则"></a>参考雅虎14条性能优化原则</h4><ol><li>尽可能减少http的请求数</li><li>使用CDN （Content Delivery Network）（内容分发网络）</li><li>添加 Expires 头（或者 Cache-control）</li><li>Gzip组件</li><li>将css样式放在页面的上方</li><li>将脚本移动到底部（包括内联的）</li><li>避免使用css中的 Expressions</li><li>将javascript 和 css 独立成外部文件</li><li>减少DNS查询</li><li>压缩Javascript 和 css</li><li>避免重定向</li><li>移除重复的脚本</li><li>配置实体标签 （ETags）</li><li>使用ajax缓存 </li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;参考雅虎14条性能优化原则&quot;&gt;&lt;a href=&quot;#参考雅虎14条性能优化原则&quot; class=&quot;headerlink&quot; title=&quot;参考雅虎14条性能优化原则&quot;&gt;&lt;/a&gt;参考雅虎14条性能优化原则&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;尽可能减少http的请求数&lt;/li&gt;
+&lt;
+      
+    
+    </summary>
+    
+      <category term="一些前端知识" scheme="http://yoursite.com/categories/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>前端兼容性问题总结</title>
