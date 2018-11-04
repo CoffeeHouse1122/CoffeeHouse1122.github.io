@@ -149,6 +149,7 @@
   
 
   <div class="container sidebar-position-left page-post-detail">
+    <canvas id="canvas" style="position: absolute"></canvas>
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,7 +228,6 @@
     </header>
 
     <main id="main" class="main">
-      <canvas id="canvas" style="position: absolute"></canvas>
       <div class="main-inner">
         <div class="content-wrap" id="qpHeight">
           <div id="content" class="content">
@@ -725,9 +725,9 @@
           // canvas气泡
           var colors = ["#69D2E7", "#A7DBD8", "#E0E4CC", "#F38630", "#FA6900", "#FF4E50", "#F9D423"]
           var canvas = document.getElementById("canvas")
-          var body = document.querySelector("body")
+          var qpHeight = document.querySelector(".container")
           canvas.width = window.innerWidth
-          canvas.height = body.offsetHeight
+          canvas.height = qpHeight.offsetHeight
           var context = canvas.getContext('2d')
           // 划圆
           function draw(ball) {
