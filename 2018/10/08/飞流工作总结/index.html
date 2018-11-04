@@ -148,7 +148,7 @@
     
   
 
-  <div id="container" class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -228,70 +228,8 @@
 
     <main id="main" class="main">
       <canvas id="canvas" style="position: absolute"></canvas>
-      <script>
-          // canvas气泡
-          var colors = ["#69D2E7", "#A7DBD8", "#E0E4CC", "#F38630", "#FA6900", "#FF4E50", "#F9D423"]
-          var canvas = document.getElementById("canvas")
-          var container = document.getElementById("container")
-          canvas.width = window.innerWidth
-          canvas.height = container.style.height
-          var context = canvas.getContext('2d')
-          // 划圆
-          function draw(ball) {
-              context.beginPath()
-              context.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI)
-              context.fillStyle = ball.color
-              context.globalCompositeOPeration = "lighter" // 颜色为所有重叠圆的颜色
-              context.fill()
-          }
-          // 取两个数之间的随机数： Math.round(Math.rondom()*(y-x)+x)
-          function random(min, max) {
-              return Math.round(Math.random()*(max-min)+min)
-          }
-          var balls = []
-          var timer
-          // 添加canvas移动事件
-          var on = true // 用来开启定时器
-          canvas.onmousemove = function(ev){
-              for (var i = 0; i < 2; i++) {
-                  var ball = {
-                      x: random(-5, 5) + ev.clientX,
-                      y: random(-5, 5) + ev.clientY,
-                      r: random(10, 30),
-                      vx: Math.random()-0.5,
-                      vy: Math.random()-0.5,
-                      color: colors[random(0, colors.length-1)]
-                  }
-                  balls.push(ball)
-                  // drallBall()
-              }
-              if (on) {
-                  timer=setInterval(drallBall,30)
-                  on = false
-              }
-          }
-
-          // 把所有的气泡画在画布上，并让气泡动起来
-          function drallBall() {
-              context.clearRect(0, 0, canvas.width, canvas.height)
-              for(var i = 0; i < balls.length; i++) {
-                  balls[i].x += balls[i].vx*8
-                  balls[i].y += balls[i].vy*8
-                  balls[i].r *= 0.94
-                  if(balls[i].r < 1){
-                      balls.splice(i,1)
-                      continue; 
-                  }
-                  draw(balls[i])
-              }
-              if(!balls.length) {
-                  clearInterval(timer)
-                  on = true
-              }
-          }
-      </script>
       <div class="main-inner">
-        <div class="content-wrap">
+        <div class="content-wrap" id="qpHeight">
           <div id="content" class="content">
             
 
@@ -697,7 +635,68 @@
     
 
     
+      <script>
+          // canvas气泡
+          var colors = ["#69D2E7", "#A7DBD8", "#E0E4CC", "#F38630", "#FA6900", "#FF4E50", "#F9D423"]
+          var canvas = document.getElementById("canvas")
+          var body = document.querySelector("body")
+          canvas.width = window.innerWidth
+          canvas.height = body.offsetHeight
+          var context = canvas.getContext('2d')
+          // 划圆
+          function draw(ball) {
+              context.beginPath()
+              context.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI)
+              context.fillStyle = ball.color
+              context.globalCompositeOPeration = "lighter" // 颜色为所有重叠圆的颜色
+              context.fill()
+          }
+          // 取两个数之间的随机数： Math.round(Math.rondom()*(y-x)+x)
+          function random(min, max) {
+              return Math.round(Math.random()*(max-min)+min)
+          }
+          var balls = []
+          var timer
+          // 添加canvas移动事件
+          var on = true // 用来开启定时器
+          canvas.onmousemove = function(ev){
+              for (var i = 0; i < 2; i++) {
+                  var ball = {
+                      x: random(-5, 5) + ev.pageX,
+                      y: random(-5, 5) + ev.pageY,
+                      r: random(10, 30),
+                      vx: Math.random()-0.5,
+                      vy: Math.random()-0.5,
+                      color: colors[random(0, colors.length-1)]
+                  }
+                  balls.push(ball)
+                  // drallBall()
+              }
+              if (on) {
+                  timer=setInterval(drallBall,30)
+                  on = false
+              }
+          }
 
+          // 把所有的气泡画在画布上，并让气泡动起来
+          function drallBall() {
+              context.clearRect(0, 0, canvas.width, canvas.height)
+              for(var i = 0; i < balls.length; i++) {
+                  balls[i].x += balls[i].vx*8
+                  balls[i].y += balls[i].vy*8
+                  balls[i].r *= 0.94
+                  if(balls[i].r < 1){
+                      balls.splice(i,1)
+                      continue; 
+                  }
+                  draw(balls[i])
+              }
+              if(!balls.length) {
+                  clearInterval(timer)
+                  on = true
+              }
+          }
+      </script>
   </div>
 
   
