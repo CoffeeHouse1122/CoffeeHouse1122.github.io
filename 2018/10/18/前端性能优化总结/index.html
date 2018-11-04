@@ -148,7 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div id="container" class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -232,6 +232,7 @@
           // canvas气泡
           var colors = ["#69D2E7", "#A7DBD8", "#E0E4CC", "#F38630", "#FA6900", "#FF4E50", "#F9D423"]
           var canvas = document.getElementById("canvas")
+          var canvas = document.getElementById("container")
           canvas.width = window.innerWidth
           canvas.height = window.innerHeight
           var context = canvas.getContext('2d')
