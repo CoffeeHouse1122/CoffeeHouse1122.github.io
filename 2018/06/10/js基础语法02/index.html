@@ -237,9 +237,9 @@
           // canvas气泡
           var colors = ["#69D2E7", "#A7DBD8", "#E0E4CC", "#F38630", "#FA6900", "#FF4E50", "#F9D423"]
           var canvas = document.getElementById("canvas")
-          var canvas = document.getElementById("container")
+          var container = document.getElementById("container")
           canvas.width = window.innerWidth
-          canvas.height = window.innerHeight
+          canvas.height = container.innerHeight
           var context = canvas.getContext('2d')
           // 划圆
           function draw(ball) {
