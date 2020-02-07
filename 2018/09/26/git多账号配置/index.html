@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/26/git多账号配置/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/09/26/git多账号配置/2.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/26/git多账号配置/3.png">
-<meta property="og:updated_time" content="2018-10-16T09:12:06.118Z">
+<meta property="og:updated_time" content="2020-02-07T03:56:11.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git多账号配置">
 <meta name="twitter:description" content="思路 ssh 方式链接到 Github／Gerrit，需要唯一的公钥，如果想同一台电脑绑定两个Github/Gerrit帐号，需要两个条件:  1.能够生成两对 私钥/公钥  2.push 时，可以区分两个账户，推送到相应的仓库  操作方法 Mac 下输入命令 ls ~/.ssh/，看到 id_rsa 与 id_rsa_pub 则说明已经有一对密钥  生成新的公钥，并命名为 id_rsa_2 (保">
@@ -361,6 +361,9 @@
 <li><p>测试 (可跳过)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T feiliu</span><br><span class="line">ssh -T github.com</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>常用git账号配置为全局，不常用账号在工程目录下进行配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 取消全局 用户名/邮箱 配置</span><br><span class="line">git config –global –unset user.name</span><br><span class="line">git config –global –unset user.email</span><br><span class="line"><span class="meta">#</span> 单独设置每个repo 用户名/邮箱</span><br><span class="line">git config user.email “xxxx@xx.com”</span><br><span class="line">git config user.name “xxxx”</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>将项目 clone 到本地, git push 测试一下</p>
 </li>
 </ol>
@@ -586,7 +589,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

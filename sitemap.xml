@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/09/26/git%E5%A4%9A%E8%B4%A6%E5%8F%B7%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2020-02-07T03:56:11.643Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/11/01/%E9%A2%84%E7%BC%96%E8%AF%91/</loc>
     
     <lastmod>2018-11-02T02:38:28.252Z</lastmod>
@@ -124,13 +131,6 @@
     <loc>http://yoursite.com/2018/03/29/3-29/</loc>
     
     <lastmod>2018-10-16T09:13:50.515Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/09/26/git%E5%A4%9A%E8%B4%A6%E5%8F%B7%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2018-10-16T09:12:06.118Z</lastmod>
     
   </url>
   
