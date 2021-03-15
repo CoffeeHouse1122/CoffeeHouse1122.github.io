@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[git 常用命令]]></title>
+    <url>%2F2021%2F03%2F15%2Fgit-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Git常用命令创建版本库 12git clone &lt;url&gt; #克隆远程版本库git init #初始化本地版本库 修改和提交 123456789git status #查看状态git diff #查看变更内容git add . #跟踪所有改动过的文件git add &lt;file&gt; #跟踪指定的文件git mv &lt;old&gt;&lt;new&gt; #文件改名git rm &lt;file&gt; #删除文件git rm --cached &lt;file&gt; #停止跟踪文件但不删除git commit -m &quot;commit message&quot; #提交所有更新过的文件git commit --amend #修改最后一次提交 查看提交历史 123git log #查看提交历史git log -p &lt;file&gt; #查看指定文件的提交历史git blame &lt;file&gt; #以列表方式查看指定文件的提交历史 撤销 123git reset --hard HEAD #撤销工作目录中所有为提交文件的修改内容git checkout HEAD &lt;file&gt; #撤销指定的未提交文件的修改内容git revert &lt;commit&gt; #撤销指定的提交]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[预编译]]></title>
     <url>%2F2018%2F11%2F01%2F%E9%A2%84%E7%BC%96%E8%AF%91%2F</url>
     <content type="text"><![CDATA[JavaScript运行三部曲 语法分析 预编译 解释执行 Imply Global，暗示全局变量，即：任何变量，如果变量未经声明就赋值，此变量就为全局对象所有(也可理解为成为全局对象（windows）下面的一个属性)预编译 预编译发生在全局 生成一个GO对象（Global Object）（全局对象）(GO === window.a) 找到变量声明和暗示全局变量，将变量作为GO属性名，值为undefined 查找函数声明，函数名作为GO对象的属性，值为函数引用 预编译发生在函数执行的前一刻（四部曲） 创建AO对象（Activation Object）(执行期上下文) 找到形参和变量声明，将变量和形参名作为AO属性名，值为undefined 将实参值和形参值统一，实参值赋给形参 查找函数声明，函数名作为AO对象的属性，值为函数引用]]></content>

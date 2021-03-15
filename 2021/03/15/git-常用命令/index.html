@@ -83,19 +83,17 @@
 
 
 
-<meta name="description" content="利用公钥，免密码登录服务器 1.生成公钥ssh-keygen -q -t rsa -C “testtest@feiliu.com” 2.找到本机公钥，复制公钥cat ~/.ssh/id_rsa.pub 3.登录服务器ssh -p 22 root@106.75.19.156 4.切换node账号su - node 5.把公钥粘贴到该文件中vi ~/.ssh/authorized_keys 6.保存退">
+<meta name="description" content="Git常用命令创建版本库 12git clone &amp;lt;url&amp;gt;     #克隆远程版本库git init            #初始化本地版本库 修改和提交 123456789git status                      #查看状态git diff                        #查看变更内容git add .">
 <meta property="og:type" content="article">
-<meta property="og:title" content="免密登录服务器">
-<meta property="og:url" content="http://yoursite.com/2018/08/03/免密登录服务器/index.html">
+<meta property="og:title" content="git 常用命令">
+<meta property="og:url" content="http://yoursite.com/2021/03/15/git-常用命令/index.html">
 <meta property="og:site_name" content="CoffeeHouse">
-<meta property="og:description" content="利用公钥，免密码登录服务器 1.生成公钥ssh-keygen -q -t rsa -C “testtest@feiliu.com” 2.找到本机公钥，复制公钥cat ~/.ssh/id_rsa.pub 3.登录服务器ssh -p 22 root@106.75.19.156 4.切换node账号su - node 5.把公钥粘贴到该文件中vi ~/.ssh/authorized_keys 6.保存退">
+<meta property="og:description" content="Git常用命令创建版本库 12git clone &amp;lt;url&amp;gt;     #克隆远程版本库git init            #初始化本地版本库 修改和提交 123456789git status                      #查看状态git diff                        #查看变更内容git add .">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/08/03/免密登录服务器/1.jpg">
-<meta property="og:updated_time" content="2018-10-16T09:11:48.170Z">
+<meta property="og:updated_time" content="2021-03-15T14:48:52.329Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="免密登录服务器">
-<meta name="twitter:description" content="利用公钥，免密码登录服务器 1.生成公钥ssh-keygen -q -t rsa -C “testtest@feiliu.com” 2.找到本机公钥，复制公钥cat ~/.ssh/id_rsa.pub 3.登录服务器ssh -p 22 root@106.75.19.156 4.切换node账号su - node 5.把公钥粘贴到该文件中vi ~/.ssh/authorized_keys 6.保存退">
-<meta name="twitter:image" content="http://yoursite.com/2018/08/03/免密登录服务器/1.jpg">
+<meta name="twitter:title" content="git 常用命令">
+<meta name="twitter:description" content="Git常用命令创建版本库 12git clone &amp;lt;url&amp;gt;     #克隆远程版本库git init            #初始化本地版本库 修改和提交 123456789git status                      #查看状态git diff                        #查看变更内容git add .">
 
 
 
@@ -125,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/03/免密登录服务器/"/>
+  <link rel="canonical" href="http://yoursite.com/2021/03/15/git-常用命令/"/>
 
 
 
 
 
-  <title>免密登录服务器 | CoffeeHouse</title>
+  <title>git 常用命令 | CoffeeHouse</title>
   
 
 
@@ -249,7 +247,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/03/免密登录服务器/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/15/git-常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="仇兆鹏">
@@ -266,7 +264,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">免密登录服务器</h1>
+          <h1 class="post-title" itemprop="name headline">git 常用命令</h1>
         
 
         <div class="post-meta">
@@ -278,8 +276,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-03T14:56:49+08:00">
-                2018-08-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-15T22:48:23+08:00">
+                2021-03-15
               </time>
             
 
@@ -288,28 +286,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/一些小知识/" itemprop="url" rel="index">
-                    <span itemprop="name">一些小知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -338,14 +314,14 @@
       
 
       
-        <h3 id="利用公钥，免密码登录服务器"><a href="#利用公钥，免密码登录服务器" class="headerlink" title="利用公钥，免密码登录服务器"></a>利用公钥，免密码登录服务器</h3><ul>
-<li>1.生成公钥<br>ssh-keygen -q -t rsa -C “<a href="mailto:testtest@feiliu.com" target="_blank" rel="noopener">testtest@feiliu.com</a>”</li>
-<li>2.找到本机公钥，复制公钥<br>cat ~/.ssh/id_rsa.pub</li>
-<li>3.登录服务器<br>ssh -p 22 <a href="mailto:root@106.75.19.156" target="_blank" rel="noopener">root@106.75.19.156</a></li>
-<li>4.切换node账号<br>su - node</li>
-<li>5.把公钥粘贴到该文件中<br>vi ~/.ssh/authorized_keys</li>
-<li>6.保存退出即可免密码登录<br><img src="/2018/08/03/免密登录服务器/1.jpg" alt=""></li>
-</ul>
+        <h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;url&gt;     #克隆远程版本库</span><br><span class="line">git init            #初始化本地版本库</span><br></pre></td></tr></table></figure>
+<h3 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git status                      #查看状态</span><br><span class="line">git diff                        #查看变更内容</span><br><span class="line">git add .                       #跟踪所有改动过的文件</span><br><span class="line">git add &lt;file&gt;                  #跟踪指定的文件</span><br><span class="line">git mv &lt;old&gt;&lt;new&gt;               #文件改名</span><br><span class="line">git rm &lt;file&gt;                   #删除文件</span><br><span class="line">git rm --cached &lt;file&gt;          #停止跟踪文件但不删除</span><br><span class="line">git commit -m &quot;commit message&quot;  #提交所有更新过的文件</span><br><span class="line">git commit --amend              #修改最后一次提交</span><br></pre></td></tr></table></figure>
+<h3 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log            #查看提交历史</span><br><span class="line">git log -p &lt;file&gt;  #查看指定文件的提交历史</span><br><span class="line">git blame &lt;file&gt;   #以列表方式查看指定文件的提交历史</span><br></pre></td></tr></table></figure>
+<h3 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD     #撤销工作目录中所有为提交文件的修改内容</span><br><span class="line">git checkout HEAD &lt;file&gt;  #撤销指定的未提交文件的修改内容</span><br><span class="line">git revert &lt;commit&gt;       #撤销指定的提交</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -385,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/22/内置对象/" rel="next" title="内置对象">
-                <i class="fa fa-chevron-left"></i> 内置对象
+              <a href="/2018/11/01/预编译/" rel="next" title="预编译">
+                <i class="fa fa-chevron-left"></i> 预编译
               </a>
             
           </div>
@@ -394,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/15/js高级/" rel="prev" title="js高级">
-                js高级 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,7 +519,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用公钥，免密码登录服务器"><span class="nav-number">1.</span> <span class="nav-text">利用公钥，免密码登录服务器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git常用命令"><span class="nav-number">1.</span> <span class="nav-text">Git常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建版本库"><span class="nav-number">1.0.1.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改和提交"><span class="nav-number">1.0.2.</span> <span class="nav-text">修改和提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看提交历史"><span class="nav-number">1.0.3.</span> <span class="nav-text">查看提交历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销"><span class="nav-number">1.0.4.</span> <span class="nav-text">撤销</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
